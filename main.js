@@ -5,3 +5,4 @@ document.querySelector(".tecla_aplausos").onclick = tocaSomAplausos;
 
 
 
+
