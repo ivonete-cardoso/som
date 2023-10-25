@@ -1,8 +1,20 @@
-function tocaSomAplausos(){
-    document.querySelector("#som_tecla_aplausos").play(); 
+//criei a finção tocaSomAplausos
+function tocaSom(idElementoAudio){
+    document.querySelector(idElementoAudio).play(); 
 }  
-document.querySelector(".tecla_aplausos").onclick = tocaSomAplausos;
+
+//criei constante listaDeTeclas e busquei a classe coletiva tecla
+const listaDeTeclas = document.querySelectorAll(".tecla");
 
 
+//criei a varialvel contador
+let contador = 0;
+
+//criei o laço de repetição white
+while(contador < listaDeTeclas.length){
+    listaDeTeclas[contador].onclick = tocaSom;
+    contador = contador + 1;
+    console.log(contador);
+} 
 
 
