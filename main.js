@@ -12,9 +12,14 @@ let contador = 0;
 
 //criei o laço de repetição white
 while(contador < listaDeTeclas.length){
-    listaDeTeclas[contador].onclick = tocaSom;
+    const efeito = listaDeTeclas[contador].classList[1];
+    const idAudio = "#som_"+ efeito;
+    listaDeTeclas[contador].onclick = function(){
+        tocaSom(idAudio);
+    }
+    
     contador = contador + 1;
-    console.log(contador);
+    
 } 
 
 
