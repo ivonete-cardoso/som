@@ -1,26 +1,39 @@
-//criei a finção tocaSomAplausos
-function tocaSom(idElementoAudio){
-    document.querySelector(idElementoAudio).play(); 
-}  
+function tocaSom (seletorAudio) {
+    const elemento = document.querySelector(seletorAudio);
 
-//criei constante listaDeTeclas e busquei a classe coletiva tecla
-const listaDeTeclas = document.querySelectorAll(".tecla");
+    if (elemento && elemento.localName === 'audio') {
+        elemento.play();
+    }
+    else {
+        //alert('Elemento não encontrado');
+        console.log('Elemento não encontrado ou seletor inválido');
+    }
 
+}
 
-//criei a varialvel contador
-let contador = 0;
+const listaDeTeclas = document.querySelectorAll('.tecla');
 
-//criei o laço de repetição white
-//trocado o while pelo for
-for(let contador = 0; contador < listaDeTeclas.length; contador = contador + 1){
+//para
+for (let contador = 0; contador < listaDeTeclas.length; contador++) {
+
     const tecla = listaDeTeclas[contador];
-    const efeito = tecla.classList[1];
-    const idAudio = `#som_${efeito}`;
-   tecla.onclick = function(){
+    const instrumento = tecla.classList[1];
+    const idAudio = `#som_${instrumento}`; //template string
+
+    tecla.onclick = function () {
         tocaSom(idAudio);
     }
-    contador = contador + 1;
-    
-} 
 
+    tecla.onkeydown = function (evento) {
 
+        if (evento.code === 'Space' || evento.code === 'Enter') {
+            tecla.classList.add('ativa');
+        }
+
+    }
+
+    tecla.onkeyup = function () {
+        tecla.classList.remove('ativa');
+    }
+
+}
